@@ -3,9 +3,12 @@ from setuptools import setup, find_packages
 with open("requirements.txt") as f:
     install_requires = f.read().strip().split("\n")
 
+# get version from __version__ variable in nfe_umt/__init__.py
+from nfe_umt import __version__ as version
+
 setup(
     name="nfe_umt",
-    version="0.0.1",
+    version=version,
     description="نظام إدارة الجامعة الوطنية للتعليم",
     author="NFE",
     author_email="support@nfe.ma",
