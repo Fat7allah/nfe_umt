@@ -1,0 +1,53 @@
+Module: NFE UMT,الجامعة الوطنية للتعليم
+DocType: Member,Member,عضو
+DocType: Member,Name,الإسم
+DocType: Member,Profession,المهنة
+DocType: Member,Institution,المؤسسة أو الفرع
+DocType: Member,Education Level,المستوى الدراسي
+DocType: Member,Birth Date,تاريخ الازدياد
+DocType: Member,Gender,الجنس
+DocType: Member,Role,المهمة
+DocType: Member,Phone,الهاتف
+DocType: Member,Email,البريد الإلكتروني
+DocType: Member,Region,الاقليم
+DocType: Member,Enabled,مفعل
+DocType: Member,Academic Year,السنة الدراسية
+
+DocType: Membership Card,Membership Card,بطاقة الإنخراط
+DocType: Membership Card,Member,العضو
+DocType: Membership Card,Start Date,تاريخ الإنخراط
+DocType: Membership Card,End Date,تاريخ الانتهاء
+DocType: Membership Card,Card Number,رقم بطاقة الإنخراط
+DocType: Membership Card,Status,حالة البطاقة
+
+DocType: Federation Structure,Federation Structure,هيكلة الجامعة
+DocType: Federation Structure,Structure Type,نوع الهيكل
+DocType: Federation Structure,Position,المنصب
+DocType: Federation Structure,Office Type,اسم المكتب
+DocType: Federation Structure,Start Date,تاريخ البداية
+DocType: Federation Structure,End Date,تاريخ النهاية
+DocType: Federation Structure,Is Active,نشط
+
+DocType: Mutual Structure,Mutual Structure,هيكلة التعاضدية
+DocType: Mutual Structure,Structure Type,نوع الهيكل
+DocType: Mutual Structure,Position,المنصب
+DocType: Mutual Structure,Start Date,تاريخ البداية
+DocType: Mutual Structure,End Date,تاريخ النهاية
+DocType: Mutual Structure,Is Active,نشط
+
+DocType: Financial Transaction,Financial Transaction,معاملة مالية
+DocType: Financial Transaction,Transaction Type,نوع المعاملة
+DocType: Financial Transaction,Date,التاريخ
+DocType: Financial Transaction,Name,الاسم
+DocType: Financial Transaction,Amount,المبلغ
+DocType: Financial Transaction,Reference Type,نوع المرجع
+DocType: Financial Transaction,Reference Name,اسم المرجع
+DocType: Financial Transaction,Notes,ملاحظات
+
+Report: Membership Card Status,Membership Card Status,تقرير حالة البطائق
+Report: Membership Card Status,Branch,الفرع
+Report: Membership Card Status,Total Cards,مجموع البطائق
+Report: Membership Card Status,Paid Cards,البطائق المؤداة
+Report: Membership Card Status,Unpaid Cards,البطائق غير المؤداة
+Report: Membership Card Status,Payment Rate,نسبة الأداء
+Report: Membership Card Status,Total Amount,المبلغ المحصل

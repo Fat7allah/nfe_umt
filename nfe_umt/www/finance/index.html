@@ -1,0 +1,154 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-right">التقرير المالي</h1>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title text-right">مجموع المداخيل</h5>
+                <h2 class="text-right">{{ frappe.utils.fmt_money(total_income) }}</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card bg-danger text-white">
+            <div class="card-body">
+                <h5 class="card-title text-right">مجموع المصاريف</h5>
+                <h2 class="text-right">{{ frappe.utils.fmt_money(total_expenses) }}</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title text-right">الرصيد</h5>
+                <h2 class="text-right">{{ frappe.utils.fmt_money(balance) }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-right office-title">تقرير حالة البطائق حسب الفروع</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-right">الفرع</th>
+                                <th class="text-right">مجموع البطائق</th>
+                                <th class="text-right">المؤداة</th>
+                                <th class="text-right">غير المؤداة</th>
+                                <th class="text-right">نسبة الأداء</th>
+                                <th class="text-right">المبلغ المحصل</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for branch in card_status %}
+                            <tr>
+                                <td class="text-right">{{ branch.name }}</td>
+                                <td class="text-right">{{ branch.total_cards }}</td>
+                                <td class="text-right">{{ branch.paid_cards }}</td>
+                                <td class="text-right">{{ branch.unpaid_cards }}</td>
+                                <td class="text-right">{{ "%.1f"|format(branch.payment_rate) }}%</td>
+                                <td class="text-right">{{ frappe.utils.fmt_money(branch.total_amount) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-right office-title">آخر المداخيل</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-right">التاريخ</th>
+                                <th class="text-right">الاسم</th>
+                                <th class="text-right">المبلغ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for income in recent_income %}
+                            <tr>
+                                <td class="text-right">{{ frappe.utils.format_date(income.date) }}</td>
+                                <td class="text-right">{{ income.name1 }}</td>
+                                <td class="text-right">{{ frappe.utils.fmt_money(income.amount) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-right office-title">آخر المصاريف</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-right">التاريخ</th>
+                                <th class="text-right">الاسم</th>
+                                <th class="text-right">المبلغ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for expense in recent_expenses %}
+                            <tr>
+                                <td class="text-right">{{ frappe.utils.format_date(expense.date) }}</td>
+                                <td class="text-right">{{ expense.name1 }}</td>
+                                <td class="text-right">{{ frappe.utils.fmt_money(expense.amount) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        direction: rtl;
+    }
+    
+    .table th {
+        text-align: right;
+    }
+    
+    .office-title {
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+</style>
+{% endblock %}

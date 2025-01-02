@@ -1,0 +1,167 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-right">هيكلة التعاضدية</h1>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-right office-title">المكتب التنفيذي</h3>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-right">الرئيس</h5>
+                                {% if executive_office.president %}
+                                <div class="member-info">
+                                    <p class="mb-1"><strong>الإسم:</strong> {{ executive_office.president.member_name }}</p>
+                                    <p class="mb-1"><strong>المهنة:</strong> {{ executive_office.president.profession }}</p>
+                                    <p class="mb-0"><strong>المؤسسة:</strong> {{ executive_office.president.institution }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-right">الكاتب العام</h5>
+                                {% if executive_office.secretary %}
+                                <div class="member-info">
+                                    <p class="mb-1"><strong>الإسم:</strong> {{ executive_office.secretary.member_name }}</p>
+                                    <p class="mb-1"><strong>المهنة:</strong> {{ executive_office.secretary.profession }}</p>
+                                    <p class="mb-0"><strong>المؤسسة:</strong> {{ executive_office.secretary.institution }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-right">الأعضاء</h5>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>الإسم</th>
+                                                <th>المنصب</th>
+                                                <th>المهنة</th>
+                                                <th>المؤسسة</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for member in executive_office.members %}
+                                            <tr>
+                                                <td>{{ member.member_name }}</td>
+                                                <td>{{ member.position }}</td>
+                                                <td>{{ member.profession }}</td>
+                                                <td>{{ member.institution }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-right office-title">المجلس الإداري</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>الإسم</th>
+                                <th>المهنة</th>
+                                <th>المؤسسة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for member in administrative_council %}
+                            <tr>
+                                <td>{{ member.member_name }}</td>
+                                <td>{{ member.profession }}</td>
+                                <td>{{ member.institution }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-right office-title">لجنة المراقبة</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>الإسم</th>
+                                <th>المهنة</th>
+                                <th>المؤسسة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for member in monitoring_committee %}
+                            <tr>
+                                <td>{{ member.member_name }}</td>
+                                <td>{{ member.profession }}</td>
+                                <td>{{ member.institution }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        direction: rtl;
+    }
+    
+    .table th {
+        text-align: right;
+    }
+    
+    .office-title {
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .member-info {
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 0.25rem;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,82 @@
+<div class="card">
+    <div class="card-body">
+        <h3 class="text-right office-title">المكتب التنفيذي</h3>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-right">الكاتب الوطني</h5>
+                        {% for member in executive_members.national_secretary %}
+                        <div class="member-info">
+                            <p class="mb-1"><strong>الإسم:</strong> {{ member.member_name }}</p>
+                            <p class="mb-1"><strong>المهنة:</strong> {{ member.profession }}</p>
+                            <p class="mb-0"><strong>المؤسسة:</strong> {{ member.institution }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-right">الكاتب العام</h5>
+                        {% for member in executive_members.general_secretary %}
+                        <div class="member-info">
+                            <p class="mb-1"><strong>الإسم:</strong> {{ member.member_name }}</p>
+                            <p class="mb-1"><strong>المهنة:</strong> {{ member.profession }}</p>
+                            <p class="mb-0"><strong>المؤسسة:</strong> {{ member.institution }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-right">أمين المال</h5>
+                        {% for member in executive_members.treasurer %}
+                        <div class="member-info">
+                            <p class="mb-1"><strong>الإسم:</strong> {{ member.member_name }}</p>
+                            <p class="mb-1"><strong>المهنة:</strong> {{ member.profession }}</p>
+                            <p class="mb-0"><strong>المؤسسة:</strong> {{ member.institution }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-right">المستشارون</h5>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>الإسم</th>
+                                        <th>المهنة</th>
+                                        <th>المؤسسة</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for member in executive_members.advisors %}
+                                    <tr>
+                                        <td>{{ member.member_name }}</td>
+                                        <td>{{ member.profession }}</td>
+                                        <td>{{ member.institution }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

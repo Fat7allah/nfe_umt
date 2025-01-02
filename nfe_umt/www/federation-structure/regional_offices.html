@@ -1,0 +1,78 @@
+<div class="card">
+    <div class="card-body">
+        <h3 class="text-right office-title">المكاتب الجهوية</h3>
+        
+        {% for office in regional_offices %}
+        <div class="card mb-3">
+            <div class="card-header">
+                <h4 class="mb-0 text-right">{{ office.name }}</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-right">الكاتب الجهوي</h5>
+                                {% if office.secretary %}
+                                <div class="member-info">
+                                    <p class="mb-1"><strong>الإسم:</strong> {{ office.secretary.member_name }}</p>
+                                    <p class="mb-1"><strong>المهنة:</strong> {{ office.secretary.profession }}</p>
+                                    <p class="mb-0"><strong>المؤسسة:</strong> {{ office.secretary.institution }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-right">أمين المال</h5>
+                                {% if office.treasurer %}
+                                <div class="member-info">
+                                    <p class="mb-1"><strong>الإسم:</strong> {{ office.treasurer.member_name }}</p>
+                                    <p class="mb-1"><strong>المهنة:</strong> {{ office.treasurer.profession }}</p>
+                                    <p class="mb-0"><strong>المؤسسة:</strong> {{ office.treasurer.institution }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-right">الأعضاء</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>الإسم</th>
+                                                <th>المنصب</th>
+                                                <th>المهنة</th>
+                                                <th>المؤسسة</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for member in office.members %}
+                                            <tr>
+                                                <td>{{ member.member_name }}</td>
+                                                <td>{{ member.position }}</td>
+                                                <td>{{ member.profession }}</td>
+                                                <td>{{ member.institution }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

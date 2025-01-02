@@ -1,0 +1,68 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"_management\",\"type\":\"header\",\"data\":{\"text\":\"إدارة الأعضاء\",\"col\":12}},{\"id\":\"members\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"الأعضاء\",\"col\":3}},{\"id\":\"membership_cards\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"بطاقات الإنخراط\",\"col\":3}},{\"id\":\"federation_structure\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"هيكلة الجامعة\",\"col\":3}},{\"id\":\"mutual_structure\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"هيكلة التعاضدية\",\"col\":3}},{\"id\":\"_finance\",\"type\":\"header\",\"data\":{\"text\":\"الإدارة المالية\",\"col\":12}},{\"id\":\"financial_transaction\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"المعاملات المالية\",\"col\":3}},{\"id\":\"membership_card_status\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"تقرير حالة البطائق\",\"col\":3}}]",
+ "creation": "2024-01-02 20:58:00.000000",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "education",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "NFE UMT",
+ "links": [],
+ "modified": "2024-01-02 20:58:00.000000",
+ "modified_by": "Administrator",
+ "module": "NFE UMT",
+ "name": "NFE UMT",
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "الأعضاء",
+   "link_to": "Member",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "بطاقات الإنخراط",
+   "link_to": "Membership Card",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "هيكلة الجامعة",
+   "link_to": "Federation Structure",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "هيكلة التعاضدية",
+   "link_to": "Mutual Structure",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "المعاملات المالية",
+   "link_to": "Financial Transaction",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "Report",
+   "label": "تقرير حالة البطائق",
+   "link_to": "Membership Card Status",
+   "type": "Report"
+  }
+ ]
+}

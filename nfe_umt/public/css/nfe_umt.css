@@ -1,0 +1,74 @@
+/* NFE UMT Custom Styles */
+body[data-route^="nfe-umt"] {
+    direction: rtl;
+}
+
+.nfe-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.nfe-card .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #007bff;
+}
+
+.nfe-stats-card {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.nfe-stats-card h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.nfe-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.nfe-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.nfe-badge-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.nfe-badge-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* RTL Specific Styles */
+.nfe-table th,
+.nfe-table td {
+    text-align: right;
+}
+
+.nfe-form-label {
+    text-align: right;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Print Styles */
+@media print {
+    .nfe-card {
+        break-inside: avoid;
+    }
+    
+    .nfe-stats-card {
+        break-inside: avoid;
+        background: none !important;
+        border: 1px solid #ddd;
+        color: #000;
+    }
+}

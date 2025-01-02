@@ -1,0 +1,98 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-right">{{ doc.name1 }}</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="text-right">المهنة</label>
+                            <p class="text-right">{{ doc.profession }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-right">المؤسسة</label>
+                            <p class="text-right">{{ doc.institution }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-right">المستوى الدراسي</label>
+                            <p class="text-right">{{ doc.education_level }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="text-right">تاريخ الازدياد</label>
+                            <p class="text-right">{{ frappe.format_date(doc.birth_date) }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-right">الجنس</label>
+                            <p class="text-right">{{ doc.gender }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-right">المهمة</label>
+                            <p class="text-right">{{ doc.role }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="text-right">بطاقات العضوية</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-right">رقم البطاقة</th>
+                                        <th class="text-right">تاريخ الإنخراط</th>
+                                        <th class="text-right">تاريخ الانتهاء</th>
+                                        <th class="text-right">الحالة</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for card in membership_cards %}
+                                    <tr>
+                                        <td class="text-right">{{ card.card_number }}</td>
+                                        <td class="text-right">{{ frappe.format_date(card.start_date) }}</td>
+                                        <td class="text-right">{{ frappe.format_date(card.end_date) }}</td>
+                                        <td class="text-right">
+                                            {% if card.status == 'المؤداة' %}
+                                            <span class="badge badge-success">{{ card.status }}</span>
+                                            {% else %}
+                                            <span class="badge badge-danger">{{ card.status }}</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        direction: rtl;
+    }
+    
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+</style>
+{% endblock %}
