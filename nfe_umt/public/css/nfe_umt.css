@@ -1,74 +1,155 @@
-/* NFE UMT Custom Styles */
-body[data-route^="nfe-umt"] {
+/* General RTL Support */
+body[data-route^="member-"] {
     direction: rtl;
+    text-align: right;
 }
 
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Droid Arabic Kufi", "Helvetica Neue", sans-serif;
+}
+
+body {
+    font-family: "Droid Arabic Naskh", "Helvetica Neue", sans-serif;
+}
+
+/* Cards */
 .nfe-card {
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    background: #fff;
 }
 
-.nfe-card .card-header {
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #007bff;
-}
-
-.nfe-stats-card {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+.nfe-card-header {
+    background: #1a237e;
     color: white;
-    border-radius: 8px;
-    padding: 1.5rem;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
 }
 
-.nfe-stats-card h2 {
-    font-size: 2rem;
-    margin: 0;
+.nfe-card-body {
+    padding: 20px;
+}
+
+/* Tables */
+.nfe-table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
 }
 
 .nfe-table th {
-    background-color: #f8f9fa;
-    font-weight: 600;
+    background-color: #f5f5f5;
+    font-weight: bold;
+    padding: 12px;
+    border-bottom: 2px solid #dee2e6;
 }
 
-.nfe-badge {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 500;
-}
-
-.nfe-badge-success {
-    background-color: #28a745;
-    color: white;
-}
-
-.nfe-badge-danger {
-    background-color: #dc3545;
-    color: white;
-}
-
-/* RTL Specific Styles */
-.nfe-table th,
 .nfe-table td {
-    text-align: right;
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
 }
 
-.nfe-form-label {
-    text-align: right;
+/* Forms */
+.nfe-form-group {
+    margin-bottom: 1rem;
+}
+
+.nfe-form-group label {
     display: block;
     margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #1a237e;
 }
 
-/* Print Styles */
-@media print {
+.nfe-form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.nfe-form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #1a237e;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(26, 35, 126, 0.25);
+}
+
+/* Buttons */
+.nfe-btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+                border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.nfe-btn-primary {
+    color: #fff;
+    background-color: #1a237e;
+    border-color: #1a237e;
+}
+
+.nfe-btn-primary:hover {
+    background-color: #0d1757;
+    border-color: #0d1757;
+}
+
+/* Alerts */
+.nfe-alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.nfe-alert-info {
+    color: #0d47a1;
+    background-color: #e3f2fd;
+    border-color: #90caf9;
+}
+
+.nfe-alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.nfe-alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
     .nfe-card {
-        break-inside: avoid;
+        margin: 10px;
     }
     
-    .nfe-stats-card {
-        break-inside: avoid;
-        background: none !important;
-        border: 1px solid #ddd;
-        color: #000;
+    .nfe-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .nfe-btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
     }
 }

@@ -1,0 +1,130 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-4">تحديث المعلومات الشخصية</h1>
+        </div>
+    </div>
+
+    {% if frappe.session.user != 'Guest' %}
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    {% if member %}
+                    <form id="update-profile-form">
+                        <div class="form-group mb-3">
+                            <label for="full_name">الإسم</label>
+                            <input type="text" class="form-control" id="full_name" name="full_name" 
+                                value="{{ member.full_name }}" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="phone">الهاتف</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" 
+                                value="{{ member.phone }}" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="email" name="email" 
+                                value="{{ member.email }}" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="institution">المؤسسة أو الفرع</label>
+                            <input type="text" class="form-control" id="institution" name="institution" 
+                                value="{{ member.institution }}" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="education_level">المستوى الدراسي</label>
+                            <select class="form-control" id="education_level" name="education_level">
+                                <option value="بكالوريا" {% if member.education_level == 'بكالوريا' %}selected{% endif %}>بكالوريا</option>
+                                <option value="إجازة" {% if member.education_level == 'إجازة' %}selected{% endif %}>إجازة</option>
+                                <option value="ماستر" {% if member.education_level == 'ماستر' %}selected{% endif %}>ماستر</option>
+                                <option value="دكتوراة" {% if member.education_level == 'دكتوراة' %}selected{% endif %}>دكتوراة</option>
+                            </select>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                            <a href="/member-portal" class="btn btn-secondary">إلغاء</a>
+                        </div>
+                    </form>
+                    {% else %}
+                    <p class="text-center">لم يتم العثور على معلومات العضوية</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12 text-center">
+            <p>يرجى تسجيل الدخول للوصول إلى هذه الصفحة</p>
+            <a href="/login" class="btn btn-primary">تسجيل الدخول</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        direction: rtl;
+        text-align: right;
+    }
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .form-group label {
+        font-weight: bold;
+        color: #1a237e;
+    }
+    .btn-primary {
+        background-color: #1a237e;
+        border-color: #1a237e;
+    }
+    .btn-primary:hover {
+        background-color: #0d1757;
+        border-color: #0d1757;
+    }
+</style>
+{% endblock %}
+
+{% block script %}
+<script>
+frappe.ready(function() {
+    $('#update-profile-form').on('submit', function(e) {
+        e.preventDefault();
+        
+        frappe.call({
+            method: 'nfe_umt.www.update_profile.update_member_info',
+            args: {
+                full_name: $('#full_name').val(),
+                phone: $('#phone').val(),
+                email: $('#email').val(),
+                institution: $('#institution').val(),
+                education_level: $('#education_level').val()
+            },
+            callback: function(r) {
+                if (!r.exc) {
+                    frappe.show_alert({
+                        message: 'تم تحديث المعلومات بنجاح',
+                        indicator: 'green'
+                    });
+                    setTimeout(function() {
+                        window.location.href = '/member-portal';
+                    }, 2000);
+                }
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

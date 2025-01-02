@@ -1,0 +1,127 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-4">طلب بطاقة عضوية جديدة</h1>
+        </div>
+    </div>
+
+    {% if frappe.session.user != 'Guest' %}
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    {% if member %}
+                    <form id="request-card-form">
+                        <div class="form-group mb-3">
+                            <label>الإسم</label>
+                            <input type="text" class="form-control" value="{{ member.full_name }}" readonly>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label>المهنة</label>
+                            <input type="text" class="form-control" value="{{ member.profession }}" readonly>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label>المؤسسة</label>
+                            <input type="text" class="form-control" value="{{ member.institution }}" readonly>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label>الإقليم</label>
+                            <input type="text" class="form-control" value="{{ member.region }}" readonly>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <h6>ملاحظات هامة:</h6>
+                            <ul>
+                                <li>سيتم مراجعة طلبك من قبل الإدارة</li>
+                                <li>سيتم إخطارك عبر البريد الإلكتروني عند الموافقة على طلبك</li>
+                                <li>يمكنك متابعة حالة طلبك من خلال بوابة الأعضاء</li>
+                            </ul>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">تقديم الطلب</button>
+                            <a href="/member-portal" class="btn btn-secondary">إلغاء</a>
+                        </div>
+                    </form>
+                    {% else %}
+                    <p class="text-center">لم يتم العثور على معلومات العضوية</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12 text-center">
+            <p>يرجى تسجيل الدخول للوصول إلى هذه الصفحة</p>
+            <a href="/login" class="btn btn-primary">تسجيل الدخول</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        direction: rtl;
+        text-align: right;
+    }
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .form-group label {
+        font-weight: bold;
+        color: #1a237e;
+    }
+    .btn-primary {
+        background-color: #1a237e;
+        border-color: #1a237e;
+    }
+    .btn-primary:hover {
+        background-color: #0d1757;
+        border-color: #0d1757;
+    }
+    .alert-info {
+        background-color: #e3f2fd;
+        border-color: #90caf9;
+        color: #0d47a1;
+    }
+    .alert-info ul {
+        margin-bottom: 0;
+        padding-right: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block script %}
+<script>
+frappe.ready(function() {
+    $('#request-card-form').on('submit', function(e) {
+        e.preventDefault();
+        
+        frappe.call({
+            method: 'nfe_umt.www.request_card.create_card_request',
+            callback: function(r) {
+                if (!r.exc) {
+                    frappe.show_alert({
+                        message: 'تم تقديم طلب البطاقة بنجاح',
+                        indicator: 'green'
+                    });
+                    setTimeout(function() {
+                        window.location.href = '/member-portal';
+                    }, 2000);
+                }
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

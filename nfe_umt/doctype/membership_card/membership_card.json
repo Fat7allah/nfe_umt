@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:CARD-{####}",
+ "creation": "2024-01-02 21:38:57.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "member",
+  "membership_date",
+  "expiry_date",
+  "card_number",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "العضو",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "fieldname": "membership_date",
+   "fieldtype": "Date",
+   "label": "تاريخ الإنخراط",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "تاريخ الانتهاء",
+   "reqd": 1
+  },
+  {
+   "fieldname": "card_number",
+   "fieldtype": "Data",
+   "label": "رقم بطاقة الإنخراط",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "غير المؤداة",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "حالة البطاقة",
+   "options": "المؤداة\nغير المؤداة",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-02 21:38:57.000000",
+ "modified_by": "Administrator",
+ "module": "NFE UMT",
+ "name": "Membership Card",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NFE Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "NFE Member",
+   "share": 0,
+   "write": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

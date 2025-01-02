@@ -1,0 +1,158 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-4">بوابة الأعضاء</h1>
+        </div>
+    </div>
+
+    {% if frappe.session.user != 'Guest' %}
+    <div class="row">
+        <!-- Member Information -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">معلوماتي الشخصية</h5>
+                    {% if member %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>الإسم</th>
+                                <td>{{ member.full_name }}</td>
+                            </tr>
+                            <tr>
+                                <th>المهنة</th>
+                                <td>{{ member.profession }}</td>
+                            </tr>
+                            <tr>
+                                <th>المؤسسة</th>
+                                <td>{{ member.institution }}</td>
+                            </tr>
+                            <tr>
+                                <th>الإقليم</th>
+                                <td>{{ member.region }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <a href="/update-profile" class="btn btn-primary">تحديث المعلومات</a>
+                    {% else %}
+                    <p>لم يتم العثور على معلومات العضوية</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Membership Cards -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">بطاقات العضوية</h5>
+                    {% if cards %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>رقم البطاقة</th>
+                                    <th>تاريخ الإنخراط</th>
+                                    <th>تاريخ الانتهاء</th>
+                                    <th>الحالة</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for card in cards %}
+                                <tr>
+                                    <td>{{ card.card_number }}</td>
+                                    <td>{{ card.membership_date }}</td>
+                                    <td>{{ card.expiry_date }}</td>
+                                    <td>{{ card.status }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <p>لا توجد بطاقات عضوية</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Organizational Roles -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">المناصب التنظيمية</h5>
+                    {% if positions %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>الهيكل</th>
+                                    <th>المنصب</th>
+                                    <th>التفاصيل</th>
+                                    <th>المنطقة</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for pos in positions %}
+                                <tr>
+                                    <td>{{ pos.structure_type }}</td>
+                                    <td>{{ pos.position }}</td>
+                                    <td>{{ pos.sub_position }}</td>
+                                    <td>{{ pos.region }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <p>لا توجد مناصب تنظيمية</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12 text-center">
+            <p>يرجى تسجيل الدخول للوصول إلى بوابة الأعضاء</p>
+            <a href="/login" class="btn btn-primary">تسجيل الدخول</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        direction: rtl;
+        text-align: right;
+    }
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .card-title {
+        color: #1a237e;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    .table th {
+        background-color: #f5f5f5;
+    }
+    .btn-primary {
+        background-color: #1a237e;
+        border-color: #1a237e;
+    }
+    .btn-primary:hover {
+        background-color: #0d1757;
+        border-color: #0d1757;
+    }
+</style>
+{% endblock %}
