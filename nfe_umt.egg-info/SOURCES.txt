@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+license.txt
+requirements.txt
+setup.py
+nfe_umt/__init__.py
+nfe_umt/hooks.py
+nfe_umt/modules.txt
+nfe_umt/patches.txt
+nfe_umt/public/css/nfe_umt.css
+nfe_umt/public/js/nfe_umt.js
+nfe_umt/templates/pages/__init__.py
