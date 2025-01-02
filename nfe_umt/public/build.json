@@ -1,8 +1,8 @@
 {
-    "js/nfe_umt.min.js": [
+    "nfe_umt/js/nfe_umt.js": [
         "public/js/nfe_umt.js"
     ],
-    "css/nfe_umt.min.css": [
+    "nfe_umt/css/nfe_umt.css": [
         "public/css/nfe_umt.css"
     ]
 }
