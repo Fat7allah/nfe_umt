@@ -1,0 +1,8 @@
+{
+    "js/nfe_umt.min.js": [
+        "public/js/nfe_umt.js"
+    ],
+    "css/nfe_umt.min.css": [
+        "public/css/nfe_umt.css"
+    ]
+}
